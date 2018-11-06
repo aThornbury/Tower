@@ -198,6 +198,8 @@ public class TTSNotificationProvider implements OnInitListener,
                         }
                     }
                     break;
+                case AttributeEvent.MISSION_UPDATED:
+                    speakMetrics();
             }
         }
     };
@@ -515,5 +517,11 @@ public class TTSNotificationProvider implements OnInitListener,
                 speak(context.getString(R.string.gps_mode_lost_gps_lock));
                 break;
         }
+    }
+// Speak metrics to be called on one of these updates
+    private void speakMetrics () {
+        speak(context.getString(R.string.horizontal_speed_telem));
+        speak(context.getString(R.string.loiter_time));
+        speak(context.getString(R.string.air_speed_label));
     }
 }
